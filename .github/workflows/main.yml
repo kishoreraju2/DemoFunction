@@ -64,7 +64,7 @@ jobs:
     # Runs a set of commands using the runners shell       
     - name: Deploy fn 
       run: |
-        docker login -u orasenatdhubsred01/oracleidentitycloudservice/kishore.kumar.raju@oracle.com -p ${{OCI_AUTH_TOKEN}} iad.ocir.io
+        docker login -u orasenatdhubsred01/oracleidentitycloudservice/kishore.kumar.raju@oracle.com -p ${{secrets.OCI_AUTH_TOKEN}} iad.ocir.io
         fn create context cloudnative --api-url https://functions.us-ashburn-1.oraclecloud.com --registry iad.ocir.io/orasenatdhubsred01/kishore --provider oracle
         fn use context cloudnative
         fn update context oracle.compartment-id ${{secrets.COMPARTMENT_OCID}}
