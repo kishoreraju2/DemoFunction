@@ -61,7 +61,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         
     - name: Configure OCIR Registry
-      run: docker login -u orasenatdhubsred01/oracleidentitycloudservice/kishore.kumar.raju@oracle.com -p ${{secrets.OCI_AUTH_TOKEN}} iad.ocir.io
+      run: docker login iad.ocir.io -u orasenatdhubsred01/oracleidentitycloudservice/kishore.kumar.raju@oracle.com -p ${{secrets.OCI_AUTH_TOKEN}}
         
 
     # Runs a set of commands using the runners shell       
