@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Oracle Functions CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -65,7 +65,8 @@ jobs:
         
 
     # Runs a set of commands using the runners shell       
-    - name: Deploy fn 
+    - name: Deploy fn
+      shell: bash
       run: |
         fn create context cloudnative --api-url https://functions.us-ashburn-1.oraclecloud.com --registry iad.ocir.io/orasenatdhubsred01/kishore --provider oracle
         fn use context cloudnative
