@@ -63,6 +63,6 @@ jobs:
     # Runs a set of commands using the runners shell       
     - name: Deploy fn 
       run: |
-        /bin/fn create context cloudnative --api-url https://functions.us-ashburn-1.oraclecloud.com --registry iad.ocir.io/orasenatdhubsred01/kishore --provider oracle
-        /bin/fn use context cloudnative
-        /bin/fn -v deploy --app hello-world-app --no-bump
+        fn create context cloudnative --api-url https://functions.us-ashburn-1.oraclecloud.com --registry iad.ocir.io/orasenatdhubsred01/kishore --provider oracle
+        fn use context cloudnative
+        fn -v deploy --app hello-world-app --no-bump
