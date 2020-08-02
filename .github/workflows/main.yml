@@ -65,4 +65,5 @@ jobs:
       run: |
         fn create context cloudnative --api-url https://functions.us-ashburn-1.oraclecloud.com --registry iad.ocir.io/orasenatdhubsred01/kishore --provider oracle
         fn use context cloudnative
+        fn update context oracle.compartment-id ${{secrets.COMPARTMENT_OCID}}
         fn -v deploy --app hello-world-app --no-bump
