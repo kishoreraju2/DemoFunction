@@ -61,7 +61,11 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         
     - name: Configure OCIR Registry
-      run: echo ${{secrets.OCI_AUTH_TOKEN}} | docker login "iad.ocir.io" --username ${{secrets.OCIR_USERNAME}} --password-stdin
+      uses: azure/docker-login@v1
+      with:
+        login-server: 'iad.ocir.io' # default: index.docker.io
+        username: ${{secrets.OCIR_USERNAME}}
+        password: ${{secrets.OCI_AUTH_TOKEN}}
         
 
     # Runs a set of commands using the runners shell       
