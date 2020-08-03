@@ -60,7 +60,7 @@ jobs:
 #         python -m pip install --upgrade pip
 #         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Oracle Functions
-      uses: kishoreraju2/Oracle-function-actions@0.0.3
+      uses: kishoreraju2/Oracle-function-actions@0.0.4
       with:
         user: '${{secrets.OCI_USER_OCID}}'
         fingerprint: '${{secrets.OCI_FINGERPRINT}}'
