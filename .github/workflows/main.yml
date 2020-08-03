@@ -27,16 +27,16 @@ jobs:
       with:
         python-version: 3.6
     
-    - name: 'Write Config & Key Files'
-      run: |
-        mkdir ~/.oci
-        echo "[DEFAULT]" >> ~/.oci/config
-        echo "user=${{secrets.OCI_USER_OCID}}" >> ~/.oci/config
-        echo "fingerprint=${{secrets.OCI_FINGERPRINT}}" >> ~/.oci/config
-        echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
-        echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
-        echo "key_file=~/.oci/key.pem" >> ~/.oci/config
-        echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/key.pem
+#     - name: 'Write Config & Key Files'
+#       run: |
+#         mkdir ~/.oci
+#         echo "[DEFAULT]" >> ~/.oci/config
+#         echo "user=${{secrets.OCI_USER_OCID}}" >> ~/.oci/config
+#         echo "fingerprint=${{secrets.OCI_FINGERPRINT}}" >> ~/.oci/config
+#         echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
+#         echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
+#         echo "key_file=~/.oci/key.pem" >> ~/.oci/config
+#         echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/key.pem
         
 #     - name: 'Install OCI CLI'
 #       run: |
@@ -52,13 +52,22 @@ jobs:
 #         oci setup repair-file-permissions --file /home/runner/.oci/key.pem
 
     # Runs a single command using the runners shell
-    - name: Install Fn Cli
-      run: curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
+#     - name: Install Fn Cli
+#       run: curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
         
 #     - name: Install dependencies
 #       run: |
 #         python -m pip install --upgrade pip
 #         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Oracle Functions
+      uses: kishoreraju2/Oracle-function-actions@0.0.3
+      with:
+        user: '${{secrets.OCI_USER_OCID}}'
+        fingerprint: '${{secrets.OCI_FINGERPRINT}}'
+        region: '${{secrets.OCI_REGION}}'
+        tenancy: '${{secrets.OCI_TENANCY_OCID}}'
+        key-file: '${{secrets.OCI_KEY_FILE}}'
+
         
     - name: Configure OCIR Registry
       uses: azure/docker-login@v1
